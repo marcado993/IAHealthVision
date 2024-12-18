@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Typography, Button, Paper, Icon } from '@mui/material';
+import { Box, Typography, Button, Paper, Icon, Tooltip, Link } from '@mui/material';
 import { VoiceChat } from '@mui/icons-material';
 import RecordArea from './recordArea';
 
@@ -67,24 +67,26 @@ const Sidebar: React.FC = () => {
         <Typography variant="h6" gutterBottom color="white">
           Conversaciones
         </Typography>
-        <Button
-          variant="contained"
-          fullWidth
-          sx={{
-            marginBottom: 2,
-            backgroundColor: '#121512',
-            '&:hover': { backgroundColor: '#2e2e2e' },
-            color: '#ffffff',
-            borderRadius: '8px',
-            textTransform: 'none',
-          }}
-          onClick={addConversation}
-        >
-          + Nuevo Paciente
-        </Button>
+        <Tooltip title="Pulsa aquí para iniciar una nueva conversación" arrow>
+          <Button
+            variant="contained"
+            fullWidth
+            sx={{
+              marginBottom: 2,
+              backgroundColor: '#121512',
+              '&:hover': { backgroundColor: '#2e2e2e' },
+              color: '#ffffff',
+              borderRadius: '8px',
+              textTransform: 'none',
+            }}
+            onClick={addConversation}
+          >
+            + Nuevo Paciente
+          </Button>
+        </Tooltip>
 
         {/* Lista de conversaciones con altura fija */}
-        <Box sx={{ height: 'calc(100vh - 240px - 40px)', overflowY: 'auto', marginTop: 1 }}> {/* Ajustamos la altura */}
+        <Box sx={{ height: 'calc(100vh - 240px - 40px)', overflowY: 'auto', marginTop: 1 }}>
           {conversations.map((conversation) => (
             <Paper
               key={conversation.id}
@@ -106,33 +108,74 @@ const Sidebar: React.FC = () => {
             </Paper>
           ))}
         </Box>
+
+        {/* Versión y etiqueta abajo de la lista de conversaciones */}
+        <Box sx={{ paddingTop: 2, textAlign: 'center' }}>
+          <Typography color="white" variant="body2">
+            v1.0.0 - @spokenHealth
+          </Typography>
+        </Box>
       </Box>
 
       {/* Área de grabación centrada y ocupando todo el espacio restante */}
       <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'center' }}>
-        {currentConversation && (
-          <RecordArea
-            conversation={currentConversation}
-            updateConversationData={updateConversationData}
-          />
-        )}
+        {/* Si no hay una conversación activa, mostrar mensaje de inicio */}
+        {currentConversation ? (
+          <>
+            <RecordArea
+              conversation={currentConversation}
+              updateConversationData={updateConversationData}
+            />
 
-        {/* Botón para guardar la conversación */}
-        {currentConversation && !currentConversation.isSaved && (
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => saveConversation(currentConversation.id)}
-            sx={{ marginTop: 2 }}
-          >
-            Guardar Conversación
-          </Button>
-        )}
-        {/* Mensaje si la conversación ya está guardada */}
-        {currentConversation && currentConversation.isSaved && (
-          <Typography color="green" sx={{ marginTop: 2 }}>
-            Conversación guardada. Ya no puedes editarla.
-          </Typography>
+            {/* Botón para guardar la conversación */}
+            {!currentConversation.isSaved && (
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => saveConversation(currentConversation.id)}
+                sx={{ marginTop: 2 }}
+              >
+                Guardar Conversación
+              </Button>
+            )}
+
+            {/* Mensaje si la conversación ya está guardada */}
+            {currentConversation.isSaved && (
+              <Typography color="green" sx={{ marginTop: 2 }}>
+                Conversación guardada. Ya no puedes editarla.
+              </Typography>
+            )}
+          </>
+        ) : (
+          <Box sx={{ textAlign: 'center' }}>
+            <Typography color="textSecondary" variant="h6">
+              Haz clic en el botón de Nueva Conversación o{' '}
+              <Button
+                variant="contained"
+                onClick={addConversation}
+                sx={{
+                  textDecoration: 'none',
+                  cursor: 'pointer',
+                  backgroundColor: 'primary.main',
+                  color: 'white',
+                  borderRadius: '50px',
+                  padding: '10px 20px',
+                  boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.3)',
+                  '&:hover': {
+                    backgroundColor: 'primary.dark',
+                    boxShadow: '0px 6px 10px rgba(0, 0, 0, 0.4)',
+                  },
+                  transition: 'all 0.3s ease',
+                  '&:active': {
+                    backgroundColor: 'primary.light',
+                  },
+                }}
+              >
+                haz clic aquí
+              </Button>
+              {' '}para empezar.
+            </Typography>
+          </Box>
         )}
       </Box>
     </Box>

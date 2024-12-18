@@ -29,7 +29,7 @@ const Topbar: React.FC = () => {
           {/* Imagen o Logo a la izquierda */}
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <img 
-              src='/Healt__1_-removebg-preview.png' // Reemplaza con la URL de tu imagen
+              src='/5de5e8d6-f67a-440b-9ca3-3509f6d96e0c-removebg-preview.png' // Reemplaza con la URL de tu imagen
               alt="Logo"
               style={{ width: 60, height: 60, marginRight: 10 }} // Estilos de la imagen
             />
@@ -42,7 +42,7 @@ const Topbar: React.FC = () => {
                 letterSpacing: '0.10px', // Espaciado de letras para un toque moderno
               }}
             >
-              Health 
+              Spoken
             </Typography>
             <Typography
               variant="h6"
@@ -53,7 +53,7 @@ const Topbar: React.FC = () => {
                 letterSpacing: '0.10px', // Espaciado de letras para un toque moderno
               }}
             >
-             Vision
+             Healt
             </Typography>
           </Box>
           
@@ -66,11 +66,11 @@ const Topbar: React.FC = () => {
                 marginRight: 1, // Espacio entre el nombre y la imagen
               }}
             >
-              John Doe {/* Nombre de usuario o cualquier texto */}
+              Jairo Doe {/* Nombre de usuario o cualquier texto */}
             </Typography>
             <IconButton>
               <img
-                src='/png-transparent-man-s-face-avatar-computer-icons-user-profile-business-user-avatar-blue-face-heroes-thumbnail.png' // Asegúrate de que sea el path correcto
+                src='/81120ab5-92df-429b-b617-0ca3bce30937.jpg' // Asegúrate de que sea el path correcto
                 alt="Perfil"
                 style={{
                   width: 40, // Tamaño de la imagen

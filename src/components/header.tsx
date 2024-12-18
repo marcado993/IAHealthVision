@@ -13,7 +13,7 @@ const Header: React.FC = () => {
           {/* Logo a la izquierda */}
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <img 
-              src="/d2c5b1da-9527-41ff-abfc-de23938213ac.jpg" // Reemplaza con la URL de tu imagen
+              src="/5de5e8d6-f67a-440b-9ca3-3509f6d96e0c-removebg-preview.png" // Reemplaza con la URL de tu imagen
               alt="Logo"
               style={{ width: 60, height: 60, marginRight: 10 }} // Estilos de la imagen
             />
@@ -27,7 +27,7 @@ const Header: React.FC = () => {
                 textTransform: 'none',
               }}
             >
-              HealtVision
+              Spoken Healt
             </Typography>
           </Box>
 

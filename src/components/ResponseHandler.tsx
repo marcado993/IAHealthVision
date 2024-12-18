@@ -87,7 +87,7 @@ const ResponseHandler: React.FC<ResponseHandlerProps> = ({
           <TextField
             fullWidth
             multiline
-            rows={4}
+            minRows={4}
             value={transcription.text}
             InputProps={{
               readOnly: true,
@@ -113,9 +113,12 @@ const ResponseHandler: React.FC<ResponseHandlerProps> = ({
           <Paper sx={{ p: 3, backgroundColor: '#fafafa', borderRadius: 2, boxShadow: 2 }}>
             <Grid container spacing={3}>
               {formFields.map((field, index) => (
-                <Grid item xs={6} key={field.label}>
+                <Grid item xs={12} key={field.label}> {/* Cambiar xs={6} a xs={12} para que los campos se apilen */}
                   <TextField
                     fullWidth
+                    multiline
+                    minRows={3} // Establecer un mínimo de filas
+                    maxRows={6} // Establecer un máximo de filas
                     label={field.label}
                     variant="outlined"
                     value={formValues[index]?.trim() || ''}
@@ -137,20 +140,6 @@ const ResponseHandler: React.FC<ResponseHandlerProps> = ({
         </Box>
       )}
 
-      {/* Caja que envuelve solo los datos y transcripción con scroll */}
-      <Box
-        sx={{
-          maxHeight: 'calc(100vh - 600px)',  // Altura ajustada con scroll
-          overflowY: 'auto',  // Habilitar scroll solo cuando sea necesario
-          mt: 3,
-          padding: 2,
-          backgroundColor: '#f9f9f9',
-          borderRadius: 2,
-          boxShadow: 1,
-        }}
-      />
-
-      {/* Botones fuera del área con scroll */}
       <Button
         variant="contained"
         color="secondary"
