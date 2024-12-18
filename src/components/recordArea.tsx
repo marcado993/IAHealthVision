@@ -145,6 +145,8 @@ const RecordArea: React.FC<RecordAreaProps> = ({ conversation, updateConversatio
         textAlign: 'center',
         border: '2px dashed rgba(144, 202, 249, 0.6)',
         boxShadow: '0 12px 32px rgba(0,0,0,0.4)',
+        overflowY: 'auto',  // Habilitar el scroll si es necesario
+        maxHeight: '80vh',  // Limitar la altura para que el scroll aparezca si hay mucho contenido
       }}
     >
       <Typography variant="h6" sx={{ color: '#E0E0E0', fontWeight: 500, marginBottom: 3 }}>
@@ -201,28 +203,28 @@ const RecordArea: React.FC<RecordAreaProps> = ({ conversation, updateConversatio
           />
         </Paper>
         <Button
-  variant="contained"
-  fullWidth
-  startIcon={<UploadFileIcon />}
-  sx={{
-    marginTop: 2,
-    padding: 1.5,
-    fontWeight: 'bold',
-    backgroundColor: audioFile ? '#66BB6A' : 'white',  // Fondo blanco por defecto, verde cuando hay archivo
-    color: audioFile ? 'white' : 'black',  // Texto blanco cuando hay archivo, negro por defecto
-    '&:hover': {
-      backgroundColor: audioFile ? '#4CAF50' : '#f1f1f1',  // Gris claro al pasar el cursor, verde más oscuro cuando hay archivo
-    },
-    '&:disabled': {
-      backgroundColor: '#e0e0e0',  // Fondo gris cuando está deshabilitado
-      color: '#b0b0b0',  // Texto gris cuando está deshabilitado
-    },
-  }}
-  onClick={handleUpload}
-  disabled={loading || !audioFile}
->
-  {loading ? <CircularProgress size={24} sx={{ color: 'black' }} /> : 'Enviar Archivo'}
-</Button>
+          variant="contained"
+          fullWidth
+          startIcon={<UploadFileIcon />}
+          sx={{
+            marginTop: 2,
+            padding: 1.5,
+            fontWeight: 'bold',
+            backgroundColor: audioFile ? '#66BB6A' : 'white',
+            color: audioFile ? 'white' : 'black',
+            '&:hover': {
+              backgroundColor: audioFile ? '#4CAF50' : '#f1f1f1',
+            },
+            '&:disabled': {
+              backgroundColor: '#e0e0e0',
+              color: '#b0b0b0',
+            },
+          }}
+          onClick={handleUpload}
+          disabled={loading || !audioFile}
+        >
+          {loading ? <CircularProgress size={24} sx={{ color: 'black' }} /> : 'Enviar Archivo'}
+        </Button>
 
         {loading && <LinearProgress sx={{ marginTop: 2, width: '100%' }} />}
         {errorMessage && <Alert severity="error" sx={{ marginTop: 2 }}>{errorMessage}</Alert>}

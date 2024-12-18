@@ -48,18 +48,24 @@ const ResponseHandler: React.FC<ResponseHandlerProps> = ({
   // Type-safe Excel download function
   const handleDownloadExcel = () => {
     try {
+      // Los valores de los campos estarán en la primera fila
       const excelData = formFields.map((field, index) => [
-        field.label, 
-        (formValues[index]?.trim() || '').toString()
+        (formValues[index]?.trim() || '').toString() // los valores en la primera fila
       ]);
 
-      const ws = XLSX.utils.aoa_to_sheet([['Campo', 'Valor'], ...excelData]);
+      // Crear la hoja de trabajo con los datos, los valores estarán en la primera fila
+      const ws = XLSX.utils.aoa_to_sheet([ // Los valores en la primera fila
+        ...excelData
+      ]);
 
+      // Crear el libro de trabajo y añadir la hoja
       const wb = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(wb, ws, 'Formulario Médico');
+
+      // Descargar el archivo Excel
       XLSX.writeFile(wb, 'formulario_medico.xlsx');
     } catch (error) {
-      console.error('Error downloading Excel:', error);
+      console.error('Error descargando el Excel:', error);
     }
   };
 
@@ -87,7 +93,7 @@ const ResponseHandler: React.FC<ResponseHandlerProps> = ({
           <TextField
             fullWidth
             multiline
-            minRows={4}
+            rows={4}
             value={transcription.text}
             InputProps={{
               readOnly: true,
@@ -98,7 +104,9 @@ const ResponseHandler: React.FC<ResponseHandlerProps> = ({
               backgroundColor: '#f5f5f5',
               borderRadius: 2,
               maxHeight: 200,
-              overflowY: 'auto',
+              overflowY: 'auto', // Permite desplazarse si el texto es muy largo
+              wordWrap: 'break-word', // Rompe palabras largas para ajustarse
+              whiteSpace: 'pre-wrap', // Mantiene los saltos de línea
             }}
           />
         </Box>
@@ -113,12 +121,9 @@ const ResponseHandler: React.FC<ResponseHandlerProps> = ({
           <Paper sx={{ p: 3, backgroundColor: '#fafafa', borderRadius: 2, boxShadow: 2 }}>
             <Grid container spacing={3}>
               {formFields.map((field, index) => (
-                <Grid item xs={12} key={field.label}> {/* Cambiar xs={6} a xs={12} para que los campos se apilen */}
+                <Grid item xs={12} key={field.label}> 
                   <TextField
                     fullWidth
-                    multiline
-                    minRows={3} // Establecer un mínimo de filas
-                    maxRows={6} // Establecer un máximo de filas
                     label={field.label}
                     variant="outlined"
                     value={formValues[index]?.trim() || ''}

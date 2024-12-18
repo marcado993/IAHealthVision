@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
 import { keyframes } from '@mui/system';
+import { useNavigate } from 'react-router-dom'; // Importar hook de redirección
 
 // Animación para el botón
 const hoverAnimation = keyframes`
@@ -10,6 +11,8 @@ const hoverAnimation = keyframes`
 `;
 
 const CTASection: React.FC = () => {
+  const navigate = useNavigate(); // Hook para navegar
+
   return (
     <Box
       sx={{
@@ -17,7 +20,7 @@ const CTASection: React.FC = () => {
         alignItems: 'center',
         justifyContent: 'center',
         height: '80vh',
-        background: 'linear-gradient(135deg, #424242, #212121)', // Degradado en tonos grises oscuros
+        background: 'linear-gradient(135deg, #4c6046, #62836f)', // Degradado en tonos grises oscuros
         color: '#fff',
         textAlign: 'center',
         padding: '20px',
@@ -34,7 +37,7 @@ const CTASection: React.FC = () => {
             lineHeight: 1.2,
           }}
         >
-          ¿Listo para comenzar tu viaje?
+          ¿Listo para utilizar la IA en tu día a día?
         </Typography>
         <Typography
           variant="h6"
@@ -45,26 +48,27 @@ const CTASection: React.FC = () => {
             opacity: 0.8,
           }}
         >
-          Únete a nosotros y empieza a disfrutar de todos los beneficios.
+          Únete a nosotros y empieza a atender mas rápido tus pacientes.
         </Typography>
+        
+        {/* Botón de redirección a login */}
         <Button
           variant="contained"
-          color="primary"
-          size="large"
+          color="secondary"
+          onClick={() => navigate('/login')} // Redirección a /login
           sx={{
-            padding: '15px 40px',
-            fontSize: '1rem',
+            fontFamily: '"Roboto", sans-serif',
             fontWeight: '600',
+            marginTop: 2, // Un poco de espacio entre los botones
+            padding: '10px 30px',
             borderRadius: '30px',
-            boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.4)',
-            backgroundColor: '#616161', // Un gris oscuro para el fondo del botón
+            backgroundColor: '#757575', // Gris claro para el fondo del botón
             '&:hover': {
-              backgroundColor: '#757575', // Gris más claro al pasar el cursor
-              animation: `${hoverAnimation} 0.3s ease-in-out`,
+              backgroundColor: '#9e9e9e', // Gris aún más claro al pasar el cursor
             },
           }}
         >
-          Regístrate Ahora
+          Registrar
         </Button>
       </Container>
     </Box>

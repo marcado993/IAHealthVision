@@ -38,10 +38,10 @@ const FeaturesSection: React.FC = () => {
               <CardContent>
                 <Speed sx={{ fontSize: 50, color: '#1976d2' }} />
                 <Typography variant="h6" sx={{ marginBottom: 2, fontWeight: 600 }}>
-                  Transcripción Rápida
+                Transcripción Automática de Audio a Texto
                 </Typography>
                 <Typography sx={{ color: 'text.secondary' }}>
-                  Convierte tus grabaciones en texto con solo unos clics. ¡De manera instantánea!
+                El sistema procesa la transcripción y extrae información relevante, como síntomas, antecedentes y diagnósticos, para llenar automáticamente los formularios médicos.
                 </Typography>
               </CardContent>
             </Card>
@@ -70,7 +70,7 @@ const FeaturesSection: React.FC = () => {
                   Inteligencia Artificial
                 </Typography>
                 <Typography sx={{ color: 'text.secondary' }}>
-                  La IA de última generación asegura transcripciones precisas, sin errores.
+                Utiliza tecnología avanzada de reconocimiento de voz para transcribir automáticamente las conversaciones entre el médico y el paciente, convirtiendo el audio en texto en tiempo real.
                 </Typography>
               </CardContent>
             </Card>
@@ -96,10 +96,10 @@ const FeaturesSection: React.FC = () => {
               <CardContent>
                 <AccessTime sx={{ fontSize: 50, color: '#1976d2' }} />
                 <Typography variant="h6" sx={{ marginBottom: 2, fontWeight: 600 }}>
-                  Resultados Inmediatos
+                Generación de Diagnósticos y Reportes Personalizados:
                 </Typography>
                 <Typography sx={{ color: 'text.secondary' }}>
-                  Transcribe tus audios en cuestión de segundos. ¡Sin esperas ni complicaciones!
+                Los profesionales pueden revisar, ajustar y validar las sugerencias, mejorando la precisión y reduciendo el margen de error.
                 </Typography>
               </CardContent>
             </Card>
