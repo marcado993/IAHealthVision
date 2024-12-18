@@ -1,0 +1,40 @@
+.landing-container {
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .hero {
+    background-color: #282c34;
+    color: #ffffff;
+    padding: 4rem 1rem;
+  }
+  
+  .cta-button {
+    background-color: #61dafb;
+    color: #000;
+    border: none;
+    padding: 1rem 2rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    border-radius: 8px;
+  }
+  
+  .cta-button:hover {
+    background-color: #4fa3d1;
+  }
+  
+  .features {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem 1rem;
+  }
+  
+  .features div {
+    max-width: 250px;
+  }
+  
+  .features h2 {
+    margin-bottom: 0.5rem;
+  }
+  
